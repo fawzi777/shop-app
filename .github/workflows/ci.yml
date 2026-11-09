@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -16,8 +16,33 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Install flake8
+        run: pip install flake8
+
+      - name: Run linter
+        run: flake8 pricing.py tests/
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: Run tests
         run: pytest -v
+
+  ready:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - name: Ready announcement
+        run: echo "Lint and all tests passed. Ready to merge."
