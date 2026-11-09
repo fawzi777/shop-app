@@ -1,5 +1,5 @@
 """Price helpers for Shop App. All prices are in ILS."""
-
+import os
 VAT_RATE = 0.18
 
 
