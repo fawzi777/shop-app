@@ -18,3 +18,5 @@ def add_vat(price, rate=VAT_RATE):
 def cart_total(prices):
     """Return the sum of all prices in the cart."""
     return round(sum(prices), 2)
+
+
