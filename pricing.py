@@ -20,3 +20,13 @@ def cart_total(prices):
     return round(sum(prices), 2)
 
 
+def apply_coupon(price, code):
+    """return the price after applying a valid coupone code."""
+    coupons = {
+        "WELCOME10": 10,
+        "VIP20": 20,
+    }
+    normalized = code.strip().upper()
+    if normalized not in coupons:
+        raise ValueError(f"Unknown coupon code: {code}")
+    return apply_discount(price, coupons[normalized])
