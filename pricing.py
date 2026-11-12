@@ -30,3 +30,15 @@ def apply_coupon(price, code):
     if normalized not in coupons:
         raise ValueError(f"Unknown coupon code: {code}")
     return apply_discount(price, coupons[normalized])
+
+
+FREE_SHIPPING_MIN = 200
+
+
+def shipping_cost(total):
+    """Return the shipping cost in ILS. Free from 200 ILS."""
+    if total >= FREE_SHIPPING_MIN:
+        return 0
+    if total >= 100:
+        return 15
+    return 30
