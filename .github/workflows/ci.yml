@@ -42,7 +42,7 @@ jobs:
         
       - name: Coverage summary
         if: always()
-        run: cat coverage.md >> "$GITHUB_STEP_SUMMARRY"   
+        run: cat coverage.md >> "$GITHUB_STEP_SUMMARY" 
 
   ready:
     runs-on: ubuntu-latest
