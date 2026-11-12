@@ -1,4 +1,5 @@
 import pytest
+
 from pricing import apply_coupon
 
 

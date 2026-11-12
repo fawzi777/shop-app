@@ -1,4 +1,5 @@
 import pytest
+
 from pricing import add_vat, apply_discount, cart_total
 
 
