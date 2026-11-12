@@ -1,2 +1,7 @@
 *.env
 logs/
+.venv/
+.covarage
+coverage.md
+coverage.xml
+
